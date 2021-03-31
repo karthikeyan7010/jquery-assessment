@@ -1,0 +1,61 @@
+<html>
+<body>
+	<style>
+body {
+  background-color: #80ff00;
+}
+.add-product{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+	<h1 style="color: red">LED LIGHT</h1>
+<img  src="31R79qb2maL.jpg" alt="Trulli" width="400" height="333">
+
+<br><br>
+ <button type="button" class="add-product" class="btn btn-danger my-cart-btn"  >Add to Cart</button>
+       <div id="products"></div>
+<h2><u>Description</u></h2>
+
+
+<p><b>Rab LED lamp in white finish, has plastic construction for added durability. The A19 arbitrary lamp with E26 medium base, has a voltage rating of 120-Volts and current rating of 125-Milli-Amps. The 9.5-Watt lamp delivers soft white light output of 800-Lumens with 2700K color temperature and 80 CRI. It has an average life of 15000 Hours. The lamp provides 230-Degree omni-directional beam angle for even light distribution. The lamp has an efficacy of 84 LPW and power factor of 0.7. It measures 2-3/8-Inch x 4-5/16-Inch. It is suitable for general lighting, commercial and residential applications. It is perfect for damp locations. Lamp meets UL, Energy Star, FCC, RoHS standards.</b>
+</p>
+<p style="color: red">. Replaces conventional halogen and incandescent lamps</p>
+<p style="color: blue">. Saves up to 85% energy</p>
+<p style="color: green">. Can be used in both enclosed and open fixtures</p>
+<p style="color: red">. Has less than 30% flicker</p>
+<p style="color: blue">. Suitable for general lighting, commercial and residential applications</p>
+<p style="color: green">. Perfect for damp locations</p>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    jQuery($ => { 
+
+  let i = 0;
+
+  const template_product = (html="") => `<div class="product col-md-3 col-sm-6 col-xs-12">
+    <div>${html}</div>
+    <button type="button" class="delete-product">Delete</button>
+  </div>`;
+
+  const addProduct = () => $('#products').append(template_product(`Product: ${++i}`)); 
+  const deleteProduct = (ev) => $(ev.target).closest('.product').remove();
+
+
+  $('.add-product').on('click', addProduct);
+  $('#products').on('click', '.delete-product', deleteProduct);
+
+ 
+});
+
+</script>
+</body>
+</html>
