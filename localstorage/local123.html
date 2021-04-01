@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Local Storage</title>
+  <style type="text/css">
+   body {
+  background-color: coral;
+}
+</style>
+  </style>
+  <script type="text/javascript">
+function store(){ 
+    var credit = document.getElementById('accid').value;
+    var depit = document.getElementById('Depoist').value;
+    var key = document.getElementById('key').value;
+
+    const car = {
+        credit: credit,
+        depit: depit,
+    }
+
+    window.localStorage.setItem(key,JSON.stringify(car));  
+    
+}
+
+function retrieveRecords(){ 
+    var key = document.getElementById('retrieveKey').value; 
+    console.log("retrive records");
+    var records = window.localStorage.getItem(key); 
+    var paragraph = document.createElement("p");
+    var infor = document.createTextNode(records);
+    paragraph.appendChild(infor);
+    var element = document.getElementById("retrieve");
+    element.appendChild(paragraph);
+}
+
+function removeItem(){ 
+    var key = document.getElementById('removeKey').value; 
+    localStorage.removeItem(key) 
+    console.log("remove items");
+}
+
+function clearStorage(){ 
+    localStorage.clear()
+    console.log("clear records");
+}
+
+window.onload =function(){ 
+    document.getElementById("carForm").onsubmit = store
+    document.getElementById("clearButton").onclick = clearStorage
+    document.getElementById("removeButton").onclick = removeItem
+    document.getElementById("retrieveButton").onclick = retrieveRecords
+}
+  </script>
+</head>
+<body>
+  <div id="formDiv">
+        <form id="carForm">
+            <h1>Local Storage</h1>
+            
+<label for="key" >Account ID</label>
+            <input type="text" id="key"  required><br>
+             <br>
+            <label for="Depoist" >  Depoist </label>
+            <input type="text" id="Depoist"  required><br>
+            <br>
+           <label for="accid" >Withdrawal</label>
+            <input type="text" id="accid"  required autofocus><br>
+            <br>
+            <button type="submit">Account balance</button>
+        </form>
+        <br>
+        <label for="retrieveKey" >MINI STATEMENT</label>
+        <input type="text" id="retrieveKey"  required><br>
+        <button id="retrieveButton">SHOW records</button>
+        <br>
+        <div id="retrieve"></div>
+        <br>
+        <label for="removeKey" >Remove the account details</label>
+        <input type="text" id="removeKey" placeholder="removeKey" required><br>
+        <button id="removeButton">Remove record</button>
+        <br><br>
+        <button id="clearButton">Clear all records</button>
+  </div>
+</body>
+</html>
+
