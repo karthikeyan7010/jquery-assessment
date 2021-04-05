@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/bank.css"/>
+        <title>
+        SBI Bank
+        </title>
+    </head>
+    <body>
+        <style type="text/css">
+            body
+            {
+                background-color: blue;
+            }
+        </style>
+        <div id="calc">
+            <h1 >Bank acc</h1>
+            
+            <h2>Registration form</h2>
+            <h4>It is a joint bank account you need to fill both userName </h4>
+            Enter the User Id 1: <input type="text" id="userId1" /> <br><br>
+            Enter the Password: <input type="password" id="pass1" onkeyup="points('1')"/><span id="mark1">&#10006</span> <input id="show1" type="button"  value="show"/> 
+            <br><br>
+             <input id="userCheck1" type="button"  value="checkAvailability"/> 
+            <br>
+            <br>
+   
+
+            Enter the User Id 2: <input type="text" id="userId2" /><br><br>
+            Enter the Password: <input type="password" id="pass2" onkeyup="points('2')"/><span id="mark2">&#10006</span> <input id="show2" type="button"  value="show"/> 
+            <br><br>
+            <input id="userCheck2" type="button"  value="checkAvailability"/> 
+            <br>
+            Intital Amount 1000 is added to your account
+            <input type="button" id="register"  value="Register"/>
+            <br>
+           
+        
+       
+      
+       
+
+        </div>
+        <div id="calc1">
+            <h1>Welcome to Login</h1>
+            UserName:<input type="text" id="checkuser" /><br><br>
+            Password:<input type="password" id="checkpass" /><input type="button" id="loginshow" value="show"/>
+            <br>
+            <br>
+            <input type="button" id="login" value="Login"/>
+        </div>
+   
+        <script src="script/jquery.js"></script>
+        <script src="script/jquery-ui.min.js"></script>
+        <script src="script/jquery-ui.js"></script>
+        <script src="script/bank.js"></script>
+    </body>
+</html>
