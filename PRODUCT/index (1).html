@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Jquery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body class="admin">
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mb-2">
+         <h1 class="head">Admin Panel For Product Adding</h1>
+            </div>
+            <div class="offset-2"></div>
+            <div class="col-10">
+                <form action="action.php" method="post">
+                    <table>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Product Skew</th>
+                            <th>Product Price</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="pro-name" id="pro-name"></td>
+                            <td><input type="text" name="pro-skew" id="pro-skew"></td>
+                            <td><input type="number" name="pro-price" id="pro-price"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary" id="btn-add">Add</button>
+            </div>
+            <div class="col-10 mt-4 mb-2">
+                <h1 class="head">Admin Panel For Product Updating & Removing</h1>
+            </div>
+            <div class="col-10">
+                <div class="col-2">
+                <table class="product-table">
+                    <tr class="main-tr">
+                        <th class="thead1">Name</th>
+                        <th class="thead2">Skew</th>
+                        <th class="thead3">Price</th>
+                        <th class="thead4">Quantity</th>
+                        <th class="thead5">Action</th>
+                    </tr>
+                </table>
+                <button class="btn btn-danger" id="btn-remove">Remove</button><br>
+            </div>
+            </div>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="index.js"></script>   
+</body>
+</html>
