@@ -1,0 +1,55 @@
+<html>
+<body>
+    <style>
+
+.add-product{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+    <h1 style="color: red">One plus 7t</h1>
+<img  src="oneplus7t.jpg" height="400">
+ <br><br>
+ <button type="button" class="add-product" class="btn btn-danger my-cart-btn"  >Add to Cart</button>
+       <div id="products"></div>
+<h2><u>specfication</u></h2>
+
+</p>
+<p style="color: red">. This Certified Refurbished product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories (Except headphone and case) and is backed by a minimum six month supplier-backed warranty; box may be generic</p>
+<p style="color: blue">.8 GB RAM | 128 GB ROM 48+12+16MP triple rear camera with telephoto lens + ultrawide angle lens | 16MP front camera with 4K video capture @ 30/60 FPS, ultrashot, nightscape, portrait, pro mode, panorama, HDR, AI scene detection, RAW image</p>
+<p style="color: green">. 16.63 centimeters (6.55 inch) 90Hz fluid AMOLED with 2400 x 1080 pixels resolution and 402 ppi pixel density</p>
+<p style="color: red">.Memory, Storage & SIM: 8GB RAM | 256GB internal memory | Dual SIM (nano+nano) dual-standby (4G+4G)</p>
+<p style="color: blue">.3300 mAh Battery</p>
+<p style="color: green">.Oxygen OS based on Android v10 operating system with 2.96GHz Qualcomm Snapdragon 855 Plus AI Engine octa-core, 7nm</p>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    jQuery($ => { 
+
+  let i = 0;
+
+  const template_product = (html="") => `<div class="product col-md-3 col-sm-6 col-xs-12">
+    <div>${html}</div>
+    <button type="button" class="delete-product">Delete</button>
+  </div>`;
+
+  const addProduct = () => $('#products').append(template_product(`Product: ${++i}`)); 
+  const deleteProduct = (ev) => $(ev.target).closest('.product').remove();
+
+
+  $('.add-product').on('click', addProduct);
+  $('#products').on('click', '.delete-product', deleteProduct);
+
+});
+
+</script>
+</body>
+</html>
