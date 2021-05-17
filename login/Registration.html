@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Customer Registration</title>
+    </head>
+<body>
+    <h1>Create New Customer Account</h1>
+    <h2>Personal Information</h2><hr>
+
+    <form action="" id="signup">
+        <input type="text" id="firstname" name="firstname" placeholder="First Name" required><br><br>
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required><br><br>
+        <input type="checkbox" id="checkbox" name="checkbox"><span>Signup for Newsletter</span><br>
+        <h2>Sign-In Information</h2><hr><br>
+        <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+        <input type="password" id="rePassword" name="rePassword" placeholder="Re-Type Password" required><span id='message'></span><br><br> 
+        <input type="button" id="submit" value="Create an Account" onclick="signup()">
+    </form>
+
+<script>
+function signup() {
+    var data = { 
+        firstname :document.getElementById("firstname").value,
+        lastname : document.getElementById("lastname").value,
+        newsletter : document.getElementById("checkbox").checked,
+        email : document.getElementById("email").value,
+        password : document.getElementById("password").value
+    }
+    let users = [];
+    users = JSON.parse(localStorage.getItem("users"));
+    console.log(users);
+    if(validateInputs() && validatePass()){
+        if(users === null){
+            users = [];
+            users.push(data);
+            localStorage.setItem('users', JSON.stringify(users));
+            window.location.href = "Detail.html";
+        } else {
+            if(userExist(users, data.email)){
+                users.push(data);
+                localStorage.setItem('users', JSON.stringify(users));
+                window.location.href = "Login.html";
+            }
+        }
+    }
+    resetInputs();
+}
+
+function validatePass(){
+    var password = document.getElementById("password").value;
+    var rePassword = document.getElementById("rePassword").value;
+    var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+    if(password === rePassword){
+        if(password.match(paswd)){
+            return true;
+        }
+        alert("Your Password should be between 8 to 15 characters which contain at least one numeric digit and a special character !!!");
+        return false;
+    }
+    alert("Your Password not matched !!!");
+    return false;
+}
+
+function validateInputs(){
+    var firstname = document.getElementById("firstname").value;
+    var lastname = document.getElementById("lastname").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var rePassword = document.getElementById("rePassword").value;
+
+    if(firstname=="" || lastname=="" || email=="" || password=="" || rePassword==""){
+        alert("All Fields are Required !!!");
+        return false;
+    } return true;
+}
+
+function userExist(users, email){
+    for(let item=0; item<users.length; item++){
+        if(email == users[item].email){
+            alert("User Already Exist with same email !!")
+            return false
+        }
+    }
+    return true;
+}
+
+function resetInputs(){
+    document.getElementById("firstname").value = "";
+    document.getElementById("lastname").value = "";
+    document.getElementById("checkbox").checked = false;
+    document.getElementById("email").value ="";
+    document.getElementById("password").value = "";
+    document.getElementById("rePassword").value = "";
+}
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+       $('#password, #rePassword').on('keyup', function () {
+  if ($('#password').val() == $('#rePassword').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+});
+  </script>
+</body>
+</html>

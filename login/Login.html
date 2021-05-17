@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Customer Login</title>
+    </head>
+<body>
+     <style type="text/css">
+        .required {
+             color: red;
+           }
+    </style>
+    <h1>Customer Login</h1>
+    <h2>Registered Customers</h2><hr>
+    <p>If you have an Account, signin with your email address</p>
+
+    <label for="email">Email<span class="required">*</span></label><br>
+    <input type="email" id="email" name="email" required><br><br>
+    <label for="pass">Password <span class="required">*</span></label><br>
+    <input type="password" id="pass" name="pass" required><br><br>
+    <input type="checkbox" id="checkbox" name="showPass" onclick="showPass()">Show Password<br><br>
+    <input type="button" name="signin" id="signin" value="Sign In" onclick="signin()">
+    <a href="Registration.html">Forgot Your Password ?</a>
+
+<script>
+    function signin() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("pass").value;
+        console.log(email);
+        console.log(password);
+        let users = JSON.parse(localStorage.getItem("users"));
+        if(email != "" || password != "") {
+            if(authenticateUser(users, email, password)){
+                console.log("success");
+                 window.location.href = "Detail.html?email="+email;
+            } else {
+                alert("Entered Email Or Password is wrong");
+            }
+        } else {
+            alert("Plese enter your Email and Password");
+        } 
+    }
+
+    function authenticateUser(users, email, password){
+        for(let item=0; item<users.length; item++){
+            if(email == users[item].email && password == users[item].password){  
+                return true
+            }
+        }
+        return false;
+    }
+
+    function showPass(){
+        var temp = document.getElementById("pass");
+        console.log(temp.type);
+        if (temp.type === "password") {
+            temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+
+</script>
+</body>
+</html>
