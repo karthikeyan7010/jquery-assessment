@@ -1,0 +1,64 @@
+<html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="orderform.js"></script>
+   </head>
+   <body>
+      <form id="form"></form>
+      <div id="table-head">
+         <table id="table">
+            <thead>
+               <tr>
+                  <th style="width: 150px;">Odd&Even</th>
+                  <th style="width: 250px;">vowels</th>
+                  <th style="width: 150px;">sorting</th>
+                  <th style="width: 100px;">large</th>
+               </tr>
+            </thead>
+         </table>
+         <div id="fields" class="fields">
+            <input type="number" id="odd-id1">
+            <input type="text"  id="vow-id1">
+            <input type="number" id="sor-id1">
+            <input type="number" id="lar-id1">
+         </div>
+      </div>
+      <div id="tablee-body">
+         <button type='button' id="add">Add</button>
+         <button type='submit' id="submit">submit</button>
+         <button type='button' id="clear">Reset</button>
+      </div>
+      <div id="table-footer">
+         <table id="table1">
+            <thead>
+               <tr>
+                  <th style="width: 300px;">Odd&Even</th>
+                  <th style="width: 300px;">vowels</th>
+                  <th style="width: 300px;">sorting</th>
+                  <th style="width: 300px;">large</th>
+               </tr>
+            </thead>
+            <br>
+            <table id="table">
+               <thead>
+                  <tr>
+                     <th id="even" style="width: 300px;"> </th>
+                     <th id="vow" style="width: 300px;"></th>
+                     <th id="sor"style="width: 300px;"></th>
+                     <th id="lar" style="width: 300px;"></th>
+                  </tr>
+               </thead>
+            </table>
+         </table>
+      </div>
+       <script type="text/javascript">
+         function testInput(event) {
+         var value = String.fromCharCode(event.which);
+         var pattern = new RegExp(/[a-zåäö ]/i);
+         return pattern.test(value);
+         }
+         $('#vow-id1').bind('keypress', testInput);
+         </script>
+         
+   </body>
+</html>
