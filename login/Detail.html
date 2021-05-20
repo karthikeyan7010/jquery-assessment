@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Customer Details</title>
+    </head>
+<body onload="showDetails()">
+    <h1>Customer Details</h1> <br> 
+    <button onclick="logout()">Logout</button><hr>
+    <div>
+        <p>Name : <span id="name"></span></p>
+        <p>Email : <span id="email"></span></p>
+        <p>Newsletter : <span id="newsletter"></span></p>
+        <p>Password : <span id="pass"></span></p>
+    </div>
+    <div>
+        <a href="ChangeEmail.html"><button>Change Email</button></a>
+    </div>
+<script>
+    function showDetails(){
+        let users = JSON.parse(localStorage.getItem("users"));
+        let url_string = window.location.href;
+        let url = new URL(url_string);
+        let email = url.searchParams.get("email") ;
+        let user = getUser(users, email);
+        console.log(users);
+        document.getElementById("name").innerHTML = user['firstname'] + " " + user["lastname"];
+        document.getElementById("email").innerHTML = user["email"];
+        document.getElementById("pass").innerHTML = user["password"];
+        if(user["newsletter"]==false){
+            document.getElementById("newsletter").innerHTML = "Unsubscribed";
+        } else {
+            document.getElementById("newsletter").innerHTML = "Subscribed";
+        }
+    }
+
+    function getUser(users, email){
+        for(let item=0; item<users.length; item++){
+            if(users[item].email==email){
+                return users[item];
+            }
+        }
+    }
+
+    function logout(){
+        window.location.href = "Login.html"
+    }
+</script>
+</body>
+</html>

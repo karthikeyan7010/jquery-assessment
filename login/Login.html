@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Customer Login</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   </head>
+   <body>
+      <style type="text/css">
+         .required {
+         color: red;
+         }
+      </style>
+      <h1>Customer Login</h1>
+      <h2>Registered Customers</h2>
+      <hr>
+      <p>If you have an Account, signin with your email address</p>
+      <label for="email">Email<span class="required">*</span></label><br>
+      <input type="email" id="email" name="email" required><br>
+      <p id="emailError"></p>
+      <label for="pass">Password <span class="required">*</span></label><br>
+      <input type="password" id="pass" name="pass" required><br><br>
+      <p style="color: red" id="passError"></p>
+      <input type="checkbox" id="checkbox" name="showPass" onclick="showPass()">Show Password<br>
+
+      <input type="button" name="signin" id="signin" value="Sign In" onclick="signin()">
+      <a href="Registration.html">Create an Account?</a>
+      <p id="error"></p>
+      <script>
+         function signin() {
+             let email = document.getElementById("email").value;
+             let password = document.getElementById("pass").value;
+
+             let users = JSON.parse(localStorage.getItem("users"));
+             if(validateEmail()==true){
+                document.getElementById("emailError").innerHTML="Correct";
+                if(validatePass()){
+                    document.getElementById("passError").innerHTML="Correct";
+                    if(authenticateUser(users, email, password)){
+                        console.log("success");
+                        window.location.href = "Detail.html?email="+email;
+                    } else {
+                        document.getElementById("error").innerHTML="Entered credentials does not matched, Please check your credentials.";
+                    }
+                }else{
+                    document.getElementById("passError").innerHTML="Your Password should be between 8 to 15 characters which contain at least one numeric digit and a special character !!!";
+
+                }
+            }else {
+                document.getElementById("emailError").innerHTML="Entered email is not valid. Please enter it in valid formate.";
+            }
+         }
+         
+         function authenticateUser(users, email, password){
+             for(let item=0; item<users.length; item++){
+                 if(email == users[item].email && password == users[item].password){  
+                     return true
+                 }
+             }
+             return false;
+         }
+         function showPass(){
+             var temp = document.getElementById("pass");
+             console.log(temp.type);
+             if (temp.type === "password") {
+                 temp.type = "text";
+             }
+             else {
+                 temp.type = "password";
+             }
+         }
+         
+         function validateEmail() {
+            let email = document.getElementById("email").value;
+            const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return reg.test(String(email).toLowerCase());
+         
+         }
+         
+         function validatePass(){
+            let pass = document.getElementById("pass").value;
+            var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+            return regex.test(pass);
+        }
+      </script>
+   </body>
+</html>

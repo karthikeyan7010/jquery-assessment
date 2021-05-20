@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Change Email</title>
+    </head>
+<body>
+    <h1>Change Customer's Email</h1> <br> <hr>
+    <input type="email" id="newEmail" name="newEmail" placeholder="New Email Id"><br><br>
+    <input type="email" name="cnfNewEmail" id="cnfNewEmail" placeholder="Confirm New Email Id"> <br><br>
+    <input type="email" name="oldEmail" id="oldEmail" placeholder="Old Email Id"><br><br>
+    <input type="password" id="password" name="password" placeholder="Password"><br><br>
+    <input type="button" id="change" name="change" value="Change" onclick="changeEmail()">
+
+    <script>
+        function changeEmail(){
+            let newEmail = document.getElementById("newEmail").value;
+            let cnfNewEmail = document.getElementById("cnfNewEmail").value;
+            let oldEmail = document.getElementById("oldEmail").value;
+            let password = document.getElementById("password").value;
+
+            let users = JSON.parse(localStorage.getItem("users"));
+
+            if(newEmail != "" && cnfNewEmail != "" && oldEmail!="" && password !=""){
+                if(newEmail === cnfNewEmail){
+                    if(userExist(users, oldEmail, password, newEmail )){
+                        alert("User's Email id is updated !!");
+                        logout();
+                    } else {
+                        alert('Entered Old Email is not Exiist on Local Storage !!');
+                    }
+                } else {
+                    alert("Email not matched");
+                }
+            } else {
+                alert("All Fields is compoulsry to fill.")
+            }
+        }
+
+        function userExist(users, email, password, newEmail){
+            for(let item=0; item<users.length; item++){
+                if(email == users[item].email && password == users[item].password){
+                    users[item].email = newEmail;
+                    localStorage.setItem('users', JSON.stringify(users));
+                    return true
+                }
+            }
+            return false;
+        }
+
+        function logout(){
+            window.location.href = "Login.html"
+        }
+    </script>
+</body>
+</html>
