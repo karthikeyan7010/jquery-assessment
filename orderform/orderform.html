@@ -1,0 +1,53 @@
+<html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="orderform.js"></script>
+   </head>
+   <body>
+      <form id="form"></form>
+      <div id="table-head">
+         <table id="table">
+            <thead>
+               <tr>
+                  <th style="width: 100px;">Odd&even list</th>
+                  <th style="width: 250px;">Vowels list</th>
+                  <th style="width: 150px;">Sorting Ascending</th>
+                  <th style="width: 100px;">Max&Min</th>
+               </tr>
+            </thead>
+         </table>
+         <div id="fields" class="fields">
+            <input type="number" id="odd-id1">
+            <input type="text" class="txtNumeric" id="vow-id1"/>
+            <input type="number" id="sor-id1">
+            <input type="number" id="lar-id1">
+         </div>
+      </div>
+      <div id="tablee-body">
+         <button type='button' id="add">Add</button>
+         <button type='submit' id="submit">submit</button>
+         <button type='button' id="clear">Reset</button>
+      </div>
+      <div id="table-footer">
+         <table id="table1">
+            <thead>
+               <tr>
+                  <th style="width: 200px;">ODD&EVEN LIST</th>
+                  <th style="width: 200px;">VOWELS LIST</th>
+                  <th style="width: 200px;">SORTING ASCENDING</th>
+                  <th style="width: 200px;">MAX&MIN</th>
+               </tr>
+            </thead>
+               <tbody id="table-body">
+                <tr>   
+                     <td id="even"></td>
+                     <td id="vow"></td>
+                     <td id="sor"></td>
+                     <td id="lar"></td>
+                  </tr>
+           </tbody>
+          </table>
+      </div>   
+  </body>
+  </html>
+     
